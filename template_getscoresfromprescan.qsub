@@ -1,0 +1,8 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe smp 1 ##using 1 core
+#$ -j y
+#$ -S /bin/bash
+#$ -V
+cd /home/vungo/Epigram_project/MouseENCODE/
+python Scripts/getscoresfromprescan.py BEDFILE OUTDIR

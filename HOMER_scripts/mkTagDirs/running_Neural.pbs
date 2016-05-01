@@ -1,0 +1,9 @@
+#!/bin/bash
+#$ -cwd
+#$ -N homernorm
+#$ -pe smp 1 ##using 1 core
+## #$ -S /bin/bash
+#$ -V
+
+bash running_Neural.sh
+

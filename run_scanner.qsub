@@ -1,0 +1,13 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe smp 1 ##using 1 core
+#$ -j y
+#$ -S /bin/bash
+#$ -V
+
+for file in *.motif; do
+	k="$(echo $file | awk -F '_' '{print $4}' | awk -F '.' '{print $1}')"
+	#echo $k
+	echo ~/Epigram_project/MouseENCODE/epigram-pipeline-0.003/bin/quickPssmScanBestMatchLite $file $k *faa.* $file.scanned
+	~/Epigram_project/MouseENCODE/epigram-pipeline-0.003/bin/quickPssmScanBestMatchLite $file $k *faa.* $file.scanned
+done
