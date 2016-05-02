@@ -10,7 +10,7 @@ for f in os.listdir(beddir):
 		bedfiles+=[f]
 
 for f in bedfiles:
-	command="subtractBed -a "+uniqueomefile +"-b "+beddir+'/'+f +" -A  > "+f.replace('.bed','.rest.bed')
+	command="subtractBed -a "+uniqueomefile +" -b "+beddir+'/'+f +" -A  > "+f.replace('.bed','.rest.bed')
 	print command
-	#os.system(command)
+	os.system(command)
 
