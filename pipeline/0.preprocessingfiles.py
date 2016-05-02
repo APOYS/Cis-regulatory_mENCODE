@@ -10,6 +10,12 @@ from sys import argv
 file=argv[1]
 currentsortedfolder=argv[2]
 
+#load the bedfiles in the current location to filter out the existing ones
+currbedfiles=[]
+for i in os.listdir(currentsortedfolder):
+	if ".bed" in i:
+		currbedfiles+=[i]
+
 #get the first line of the file only to get the metadata file
 os.system("head -1 "+file + " > metadata.download.txt")
 #download the metadata.tsv file
@@ -53,11 +59,6 @@ for i in tmp:
 	if ".bed" in i:
 		bedfiles+=[i]
 
-#load the bedfiles in the current location to filter out the existing ones
-currbedfiles=[]
-for i in os.listdir(currentsortedfolder):
-	if ".bed" in i:
-		currbedfiles+=[i]
 
 newbedfiles=[]
 for bf in bedfiles:
