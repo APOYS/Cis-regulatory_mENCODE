@@ -63,7 +63,7 @@ for f in os.listdir(beddir):
 
 for bf in bedfiles:
 	bedfile=prefix+'/'+bf
-	link=bedtoinfodict[bf.replace('.bed','')]
+	link=bedtoinfodict[bf.replace('.bed','.DCC.bed')]
 	command='ln -s '+bedfile+" "+link
 	print command
 	#os.system(command)
