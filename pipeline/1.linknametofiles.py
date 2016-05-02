@@ -3,12 +3,12 @@ from sys import argv
 
 """Creating links to the bedfiles, name the links based on their information"""
 
-#beddir=argv[1]
-#bedmetadata=argv[2]
-bedmetadata="/Users/vungo/Downloads/metadata.tsv"
-sampleinfo='samples.csv'
-#sampleinfo=argv[3]
-#prefix=argv[4] #this is the prefix of the links, use absolute paths
+beddir=argv[1]
+bedmetadata=argv[2]
+#bedmetadata="/Users/vungo/Downloads/metadata.tsv"
+#sampleinfo='samples.csv'
+sampleinfo=argv[3]
+prefix=argv[4] #this is the prefix of the links, use absolute paths
 
 s="ENCFF788SXX,H3K4me2,E14.5,Kidney,1,ExpAcc:ENCSR658TDS md5sum:6a2c2a715bd798fb728d4eccf8828bc1 URL:https://www.encodeproject.org/files/ENCFF788SXX/@@download/ENCFF788SXX.bam genomeversion:mm10,renlab"
 
@@ -56,12 +56,17 @@ for i in actoexp:
 	if "ENC" in actoexp[i]:
 		print i,actoexp[i],expInfodict[actoexp[i]]
 		bedtoinfodict[i]=expInfodict[actoexp[i]]
+bedfiles=[]
+for f in os.listdir(beddir):
+	if ".bed" in f:
+		bedfiles+=[f]
 
-for bf in bedtoinfodict:
-	bedfile=prefix+'/'+bf+'.bed'
-	link=bedtoinfodict[bf]
-	os.system('ln -s '+bedfile+" "+link)
-	
+for bf in bedfiles:
+	bedfile=prefix+'/'+bf
+	link=bedtoinfodict[bf.replace('.bed','')]
+	command='ln -s '+bedfile+" "+link
+	#os.system(command)
+
 
 
 
