@@ -65,6 +65,7 @@ for bf in bedfiles:
 	bedfile=prefix+'/'+bf
 	link=bedtoinfodict[bf.replace('.bed','')]
 	command='ln -s '+bedfile+" "+link
+	print command
 	#os.system(command)
 
 
