@@ -52,7 +52,7 @@ os.system("xargs -n 1 curl -O -L < ../filestodownload.txt")
 os.system("gunzip -f *.gz")
 
 #make a sorted bed file folder
-os.system("mkdir sorted_bed")
+os.system("mkdir ../new_sorted_bed")
 tmp=os.listdir("./")
 bedfiles=[]
 for i in tmp:
@@ -70,7 +70,11 @@ print "Sorting the NEW bedfiles ..."
 
 for bf in newbedfiles:
 	print bf
-	os.system("sort -k1,1 -k2,2n "+bf +" > sorted_bed/"+bf)
+	os.system("sort -k1,1 -k2,2n "+bf +" > ../new_sorted_bed/"+bf)
+
+print "removing redundant ones..."
+
+os.system('rm *.bed')
 
 print "DONE :)"
 
