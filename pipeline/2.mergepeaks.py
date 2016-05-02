@@ -20,15 +20,15 @@ bedfiles=[]
 for file in os.listdir(beddir):
 	if '.bed' in file:
 		bedfiles+=[file]
-
+print "Number of files",len(bedfiles)
 #narrowPeaks
 for f in bedfiles:
 	peaktype=isBroadorNarrow(f)
 	#print peaktype
 	if peaktype=="narrow":
-		os.system("mergeBed -d 1000 -i "+ f+" > "+f.replace(".bed",".narrowPeaks.bed"))
+		os.system("mergeBed -d 1000 -i "+ beddir+'/'+f+" > "+f.replace(".bed",".narrowPeaks.bed"))
 	elif peaktype=="broad":
-		os.system("mergeBed -d 2500 -i "+ f+" > "+f.replace(".bed",".broadPeaks.bed"))
+		os.system("mergeBed -d 2500 -i "+ beddir+'/'+f+" > "+f.replace(".bed",".broadPeaks.bed"))
 	else:
 		print "ERROR, no type detected"
 
