@@ -8,7 +8,7 @@ from sys import argv
 """This part filters for only REPLICATED peak files"""
 
 file=argv[1]
-#currentsortedfolder=argv[2]
+currentsortedfolder=argv[2]
 
 #get the first line of the file only to get the metadata file
 os.system("head -1 "+file + " > metadata.download.txt")
@@ -27,6 +27,7 @@ print "Numer of replicated peak files is ",len(replicatedFiles)
 allFiles=open(file).read().strip().split('\n')
 linkstokeep=[]
 for line in allFiles:
+
 	name=line.split('/')[-1].replace('.bed.gz','')
 	if name in replicatedFiles:
 		linkstokeep+=[line]
@@ -37,15 +38,41 @@ for line in linkstokeep:
 	out.write(line+'\n')
 out.close()
 os.system("mkdir tmp_new_download")
-#os.chdir("tmp_new_download") 
+os.chdir("tmp_new_download") 
 #download all the files in the file to download
-os.system("xargs -n 1 curl -O -L < filestodownload.txt")
+os.system("xargs -n 1 curl -O -L < ../filestodownload.txt")
 
 #unzip them all
 os.system("gunzip -f *.gz")
 
-#move them all to the tmp folder
-os.system("mv *.bed tmp_new_download")
+#make a sorted bed file folder
+os.system("mkdir sorted_bed")
+tmp=os.listdir("./")
+bedfiles=[]
+for i in tmp:
+	if ".bed" in i:
+		bedfiles+=[i]
+
+#load the bedfiles in the current location to filter out the existing ones
+currbedfiles=[]
+for i in os.listdir(currentsortedfolder):
+	if ".bed" in i:
+		currbedfiles+=[i]
+
+newbedfiles=[]
+for bf in bedfiles:
+	if bf not in currbedfiles:
+		newbedfiles+=[bf]
+
+print "There are",len(newbedfiles),"new bed files out of",len(bedfiles),"downloaded."
+print "Sorting the NEW bedfiles ..."
+
+for bf in newbedfiles:
+	print bf
+	os.system("sort -k1,1 -k2,2n "+bf +" > sorted_bed/"+bf)
+
+print "DONE :)"
+
 
 
 
