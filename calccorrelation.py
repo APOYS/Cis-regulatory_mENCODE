@@ -17,7 +17,7 @@ def readscorefromfile(file):
 		name=tmp[0].split('_')
 		chrom=name[0]
 		loc=name[1]
-		scoresdict[chrom+'_'+loc]=s
+		scoredict[chrom+'_'+loc]=s
 	return scoredict
 def readcoveragefromfile(file):
 	coveragedict={}
