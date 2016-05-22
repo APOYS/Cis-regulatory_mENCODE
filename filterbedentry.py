@@ -1,7 +1,7 @@
 """
 Input: 2 files
 	- coverage bedfile
-	- merged peak file
+	- binned 500 merged peak file
 
 Out: filtered coverage bedfile
 """
@@ -21,7 +21,7 @@ def main():
 	out=open(outfile,'w')
 	for line in open(covfile):
 		tmp=line.split('\t')
-		name=tmp[0]+"_"+tm[1]
+		name=tmp[0]+"_"+tmp[1]
 		if name in peaks:
 			out.write(name+"\t"+tmp[3])
 	out.close()
