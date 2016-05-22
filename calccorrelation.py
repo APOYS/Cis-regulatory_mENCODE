@@ -53,14 +53,18 @@ def main():
 		print file,"read scores"
 		scores=readscorefromfile(scorefiledir+'/'+file)
 		print "get vectors"
-		scorevector=[]
-		covector=[]
+		
 		for coveragedict in coverages:
+			scorevector=[]
+			covector=[]
 			for name in coverages[coveragedict]:
-				scorevector+=[scores[name]]
-				covector+=[coverages[coveragedict][name]]
-				correlation=stats.spearmanr(scorevector, covector)
-				print file+'\t'+coveragedict+str(correlation)
+				try:
+					scorevector+=[scores[name]]
+					covector+=[coverages[coveragedict][name]]
+				except KeyError:
+					pass
+			correlation=stats.spearmanr(scorevector, covector)
+			print file+'\t'+coveragedict+str(correlation)
 	'''print "read Peaks"
 	peaks={}
 	for line in open(peakfile):
