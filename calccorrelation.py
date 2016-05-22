@@ -59,7 +59,7 @@ def main():
 	coverages={}
 	for file in coveragefiles:
 		print file
-		peakfile=peakdir+'/'+file.split(".bin500")[0]+".DCC.broadPeaks.mark.bin500.bed"
+		peakfile=peakdir+'/'+file.split(".bin500")[0]+".DCC.mark.bin500.bed"
 		coveragedict=readcoveragefromfile(coveragedir+'/'+file,peakfile)
 		coverages[file]=coveragedict
 	
