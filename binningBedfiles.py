@@ -17,7 +17,7 @@ def main():
 		start=(int(tmp[1])-n/2)/500*500
 		end=(int(tmp[2])+n/2)/n*n
 		newline=chrom+'\t'+str(start)+'\t'+str(end)
-		out.write(newline)
+		out.write(newline+'\n')
 	out.close()
 	return
 
