@@ -57,7 +57,7 @@ def main():
 
 	print "read covs"
 	coverages={}
-	for file in coveragefiles[:10]:
+	for file in coveragefiles:
 		
 		peakfile=peakdir+'/'+file.split(".bin500")[0]+".DCC.mark.bin500.bed"
 		#peakfile=peakfile.replace("facial","Facial")
