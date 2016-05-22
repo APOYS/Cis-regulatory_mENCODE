@@ -48,7 +48,7 @@ def main():
 		coveragedict=readcoveragefromfile(coveragedir+'/'+file)
 		coverages[file]=coveragedict
 	
-
+	output=open("Spearman_correlation_motif_histone.tsv")
 	for file in scorefiles[:5]:
 		print file,"read scores"
 		scores=readscorefromfile(scorefiledir+'/'+file)
@@ -64,19 +64,11 @@ def main():
 				except KeyError:
 					pass
 			correlation=stats.spearmanr(scorevector, covector)
-			print file+'\t'+coveragedict+'\t'+str(correlation[0])+'\t'+str(correlation[1])
-	'''print "read Peaks"
-	peaks={}
-	for line in open(peakfile):
-		tmp=line.strip().split('\t')
-		chrom=tmp[0]
-		start=tmp[1]
-		try:
-			peaks[chrom][start]=1
-		except KeyError:
-			peaks[chrom]={}
-			peaks[chrom][start]=1
-	'''
+			line=file+'\t'+coveragedict+'\t'+str(correlation[0])+'\t'+str(correlation[1])
+			print line
+			output.write(line+'\n')
+	output.close()
+
 	return
 
 if __name__=="__main__":
