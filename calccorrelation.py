@@ -64,7 +64,7 @@ def main():
 				except KeyError:
 					pass
 			correlation=stats.spearmanr(scorevector, covector)
-			print file+'\t'+coveragedict+str(correlation)
+			print file+'\t'+coveragedict+'\t'+str(correlation[0])+'\t'+str(correlation[1])
 	'''print "read Peaks"
 	peaks={}
 	for line in open(peakfile):
