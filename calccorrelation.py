@@ -6,17 +6,61 @@ Input:  files:
 Output:
 Correlation between the motif and the histone mark 
 """
-import time
-
 import os
 from sys import argv
 from scipy import stats
+def readscorefromfile(file):
+	scoredict={}
+	for line in open(file):
+		tmp=line.strip().split('\t')
+		s=float(tmp[1])
+		name=tmp[0].split('_')
+		chrom=name[0]
+		loc=name[1]
+		scoresdict[chrom+'_'+loc]=s
+	return scoredict
+def readcoveragefromfile(file):
+	coveragedict={}
+	for line in open(file):
+		tmp=line.strip().split('\t')
+		cov=float(tmp[1])
+		name=tmp[0]
+		coveragedict[name]=cov
+	return coveragedict
 def main():
-	coveragedir=("./WorkingDCCdata/DCC_regions_bin500/test/Cranio-Facial_E11.5.test.bed")
-	coveragefiles=os.listdir(coveragedir)
+	coveragedir=argv[1]
+	scorefiledir=argv[2]
+	coveragefiles=[]
+	for file in os.listdir(coveragedir):
+		if "filtered" in file and "bin500" in file:
+			coveragefiles+=[file]
+	
+	scorefiles=[]
+	for file in os.listdir(scorefiledir):
+		if "scanned" in file and "motif" in file:
+			scorefiles+=[file]
+	
 
-	scorefile=("./WorkingDCCdata/Regions_forscanning/Scanning_results/0_motif.100_Forebrain_E13.5_H3K4me162_0.503_7.785084e-24_12.motif.scanned")
-	#peakfile=("./WorkingDCCdata/DCC_regions_bin500/Cranio-Facial_E11.5_H3K27ac.DCC.narrowPeaks.mark.bin500.bed")
+	print "read covs"
+	coverages={}
+	for file in coveragefiles:
+		print file
+		coveragedict=readcoveragefromfile(coveragedir+'/'+file)
+		coverages[file]=coveragedict
+	
+
+	for file in scorefiles:
+		print file,"read scores"
+		scores=readscorefromfile(scorefiledir+'/'+file)
+		print "get vectors"
+		scorevector=[]
+		covector=[]
+		for coveragedict in coverages:
+			for name in coverages[coveragedict]:
+				scorevector+=[scores[name]]
+				covector+=[coverages[coveragedict][name]]
+				correlation=stats.spearmanr(scorevector, covector)
+				print file+'\t'+coveragedict+str(correlation)
 	'''print "read Peaks"
 	peaks={}
 	for line in open(peakfile):
@@ -29,40 +73,7 @@ def main():
 			peaks[chrom]={}
 			peaks[chrom][start]=1
 	'''
-	
-	print "read scores"
-	scores={}
-	for line in open(scorefile):
-		tmp=line.strip().split('\t')
-		s=float(tmp[1])
-		name=tmp[0].split('_')
-		chrom=name[0]
-		loc=name[1]
-		scores[chrom+'_'+loc]=s
-
-	print "read covs"
-	for file in coveragefiles:
-		print file
-		coverages={}
-		for line in open(file):
-			tmp=line.strip().split('\t')
-			cov=float(tmp[1])
-			name=tmp[0]
-			coverages[name]=cov
-
-		print "get vectors"
-		scorevector=[]
-		covector=[]
-		for name in coverages:
-			scorevector+=[scores[name][0]]
-			covector+=[coverages[name][1]]
-		print "calc corl"
-		correlation=stats.spearmanr(scorevector, covector)
-		print correlation
-
 	return
 
 if __name__=="__main__":
 	main()
-end = time.time()
-print(end - start)
