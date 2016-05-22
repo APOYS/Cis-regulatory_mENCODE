@@ -11,7 +11,7 @@ def main():
 	if "Neural" in tisuestage[0]:
 		tisuestage[0]="Neural"
 
-	regionfile='_'.join(tisuestage)+".sorted.merged.bin500"
+	regionfile='.'.join(tisuestage)+".sorted.merged.bin500"
 	pathtoregion='/home/vungo/MouseENCODE_project/WorkingDCCdata/DCC_regions_bin500/X.mergedregions/'
 	cmd="python ~/MouseENCODE_project/mENCODE_scripts/filterbedentry.py "+covfile+" "+pathtoregion+regionfile+" "+outfile
 	#print cmd
