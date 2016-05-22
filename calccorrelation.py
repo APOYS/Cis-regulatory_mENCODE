@@ -19,13 +19,20 @@ def readscorefromfile(file):
 		loc=name[1]
 		scoredict[chrom+'_'+loc]=s
 	return scoredict
-def readcoveragefromfile(file):
+def readcoveragefromfile(file,peakfile):
+	peakdict={}
+	for line in open(peakfile):
+		tmp=line.strip().split('\t')
+		name=tmp[0]+'_'+tmp[1]
+		peakdict[name]=1
+
 	coveragedict={}
 	for line in open(file):
 		tmp=line.strip().split('\t')
 		cov=float(tmp[1])
 		name=tmp[0]
-		coveragedict[name]=cov
+		if name in peakdict:
+			coveragedict[name]=cov
 	return coveragedict
 def main():
 	coveragedir=argv[1]
@@ -33,6 +40,7 @@ def main():
 	outfile=argv[3]
 	start=int(argv[4])
 	end=int(argv[5])
+	peakdir=argv[6]
 	coveragefiles=[]
 	for file in os.listdir(coveragedir):
 		if "filtered" in file and "bin500" in file:
@@ -51,7 +59,8 @@ def main():
 	coverages={}
 	for file in coveragefiles:
 		print file
-		coveragedict=readcoveragefromfile(coveragedir+'/'+file)
+		peakfile=peakdir+'/'+file.split(".bin500")[0]+".DCC.broadPeaks.mark.bin500.bed"
+		coveragedict=readcoveragefromfile(coveragedir+'/'+file,peakfile)
 		coverages[file]=coveragedict
 	
 	output=open(outfile,'w')
