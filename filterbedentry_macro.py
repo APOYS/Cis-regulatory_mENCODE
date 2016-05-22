@@ -1,5 +1,5 @@
 from sys import argv
-
+import os
 def main():
 	covfile=argv[1]
 	basecovfile=covfile.split("/")[-1]
@@ -14,7 +14,8 @@ def main():
 	regionfile='_'.join(tisuestage)+".sorted.merged.bin500"
 	pathtoregion='/home/vungo/MouseENCODE_project/WorkingDCCdata/DCC_regions_bin500/X.mergedregions/'
 	cmd="python ~/MouseENCODE_project/mENCODE_scripts/filterbedentry.py "+covfile+" "+pathtoregion+regionfile+" "+outfile
-	print cmd
+	#print cmd
+	os.system(cmd)
 	return
 
 if __name__=="__main__":
