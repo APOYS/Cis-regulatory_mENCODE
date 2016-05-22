@@ -16,8 +16,12 @@ def main():
 		chrom=tmp[0]
 		start=(int(tmp[1])-n/2)/500*500
 		end=(int(tmp[2])+n/2)/n*n
-		newline=chrom+'\t'+str(start)+'\t'+str(end)
-		out.write(newline+'\n')
+		numberofbins=(end-start)/500
+		for i in range(numberofbins):
+			s=start+i*500
+			e=start+(i+1)*500
+			newline=chrom+'\t'+str(s)+'\t'+str(e)
+			out.write(newline+'\n')
 	out.close()
 	return
 
