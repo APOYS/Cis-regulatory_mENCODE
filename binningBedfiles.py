@@ -10,6 +10,9 @@ def main():
 	output=argv[3]
 	#read bedfile
 	seqs=open(input).read().strip().split('\n')
+	if len(seqs)==0:
+		print "Empty file, exit"
+		sys.exit(0)
 	out=open(output,'w')
 	for line in seqs:
 		tmp=line.strip().split('\t')
