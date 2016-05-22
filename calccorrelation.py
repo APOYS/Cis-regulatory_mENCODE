@@ -48,7 +48,7 @@ def main():
 		coveragedict=readcoveragefromfile(coveragedir+'/'+file)
 		coverages[file]=coveragedict
 	
-	output=open("Spearman_correlation_motif_histone.tsv")
+	output=open("Spearman_correlation_motif_histone.tsv",'w')
 	for file in scorefiles[:5]:
 		print file,"read scores"
 		scores=readscorefromfile(scorefiledir+'/'+file)
