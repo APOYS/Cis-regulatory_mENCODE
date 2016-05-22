@@ -30,6 +30,9 @@ def readcoveragefromfile(file):
 def main():
 	coveragedir=argv[1]
 	scorefiledir=argv[2]
+	outfile=argv[3]
+	start=int(argv[4])
+	end=int(argv[5])
 	coveragefiles=[]
 	for file in os.listdir(coveragedir):
 		if "filtered" in file and "bin500" in file:
@@ -39,6 +42,9 @@ def main():
 	for file in os.listdir(scorefiledir):
 		if "scanned" in file and "motif" in file:
 			scorefiles+=[file]
+	print "READING",end-start,"SCORE FILES"
+	for file in scorefiles[start:end]:
+		print file
 	
 
 	print "read covs"
@@ -48,8 +54,9 @@ def main():
 		coveragedict=readcoveragefromfile(coveragedir+'/'+file)
 		coverages[file]=coveragedict
 	
-	output=open("Spearman_correlation_motif_histone.tsv",'w')
-	for file in scorefiles:
+	output=open(outfile,'w')
+	print "READING",end-start,"SCORE FILES"
+	for file in scorefiles[start:end]:
 		print file,"read scores"
 		scores=readscorefromfile(scorefiledir+'/'+file)
 		print "get vectors"
