@@ -1,5 +1,4 @@
-import os
-from sys import agrv
+from sys import argv
 
 def main():
 	covfile=argv[1]
