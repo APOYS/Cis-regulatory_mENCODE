@@ -43,13 +43,13 @@ def main():
 
 	print "read covs"
 	coverages={}
-	for file in coveragefiles:
+	for file in coveragefiles[:10]:
 		print file
 		coveragedict=readcoveragefromfile(coveragedir+'/'+file)
 		coverages[file]=coveragedict
 	
 
-	for file in scorefiles:
+	for file in scorefiles[:5]:
 		print file,"read scores"
 		scores=readscorefromfile(scorefiledir+'/'+file)
 		print "get vectors"
