@@ -43,13 +43,13 @@ def main():
 
 	print "read covs"
 	coverages={}
-	for file in coveragefiles[:10]:
+	for file in coveragefiles:
 		print file
 		coveragedict=readcoveragefromfile(coveragedir+'/'+file)
 		coverages[file]=coveragedict
 	
 	output=open("Spearman_correlation_motif_histone.tsv",'w')
-	for file in scorefiles[:5]:
+	for file in scorefiles:
 		print file,"read scores"
 		scores=readscorefromfile(scorefiledir+'/'+file)
 		print "get vectors"
