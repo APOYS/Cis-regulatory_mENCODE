@@ -2,6 +2,7 @@
 Input: 2 files
 	- coverage bedfile
 	- binned 500 merged peak file
+	- outfile
 
 Out: filtered coverage bedfile
 """
