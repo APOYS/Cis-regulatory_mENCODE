@@ -7,18 +7,18 @@ OUTPUT: best motifs according to the cutoffs in a .meme file
 from sys import argv
 
 def main():
-	#memefile=argv[1]
-	#fisherfile=argv[2]
-	##aucfile=argv[3]
-	#enrichmentcutoff=float(argv[4])
-	#outfile=argv[5]
+	memefile=argv[1]
+	fisherfile=argv[2]
+	aucfile=argv[3]
+	enrichmentcutoff=float(argv[4])
+	outfile=argv[5]
 	
 	pvaluecutoff=1e-20
 
-	memefile="/Users/vungo/Downloads/epigramtest.markfull.meme"
-	outfile="/Users/vungo/Downloads/epigramtest.bestmotifs.txt"
-	aucfile="/Users/vungo/Downloads/epigramtest.auc.txt"
-	fisherfile="/Users/vungo/Downloads/epigramtest.fisher.txt"
+	#memefile="/Users/vungo/Downloads/epigramtest.markfull.meme"
+	#outfile="/Users/vungo/Downloads/epigramtest.bestmotifs.txt"
+	#aucfile="/Users/vungo/Downloads/epigramtest.auc.txt"
+	#fisherfile="/Users/vungo/Downloads/epigramtest.fisher.txt"
 	
 	enrichmentcutoff=1.5
 	#print pvaluecutoff
