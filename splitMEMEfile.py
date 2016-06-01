@@ -10,10 +10,10 @@ def main():
 	k=int(argv[2])
 
 	#k=15
-	binsize=k
 
 	motifs=open(memefile).read().strip().split('MOTIF')
 	motifs=motifs[1:]
+	binsize=len(motifs)/k
 
 	count=1
 	out=open(memefile+"."+str(count)+".meme",'w')
