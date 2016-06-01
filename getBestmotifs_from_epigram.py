@@ -69,8 +69,8 @@ def main():
 			if m.strip() in pwm:
 				notfound=False
 				motifstoprint+=[pwm]
-		if notfound:
-			print m,"Not Found",listofmotifs[m]
+		#if notfound:
+			#print m,"Not Found",listofmotifs[m]
 	out=open(outfile,'w')
 	out.write(header)
 	for pwm in motifstoprint:
