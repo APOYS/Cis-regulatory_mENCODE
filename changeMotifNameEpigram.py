@@ -11,7 +11,7 @@ def main():
 	prefix=argv[2]
 	outfile=argv[3]
 	seq=open(infile).read().strip()
-	seq=seq.replace("MOTIF\t","MOTIF\t"+prefix)
+	seq=seq.replace("MOTIF","MOTIF\t"+prefix)
 	out=open(outfile,'w')
 	out.write(seq)
 	out.close()
