@@ -7,20 +7,20 @@ OUTPUT: best motifs according to the cutoffs in a .meme file
 from sys import argv
 
 def main():
-	memefile=argv[1]
-	fisherfile=argv[2]
-	aucfile=argv[3]
-	enrichmentcutoff=float(argv[4])
-	outfile=argv[5]
+	#memefile=argv[1]
+	#fisherfile=argv[2]
+	##aucfile=argv[3]
+	#enrichmentcutoff=float(argv[4])
+	#outfile=argv[5]
 	
 	pvaluecutoff=1e-20
 
-
-	#outfile="/Users/vungo/Downloads/epigramtest.bestmotifs.txt"
-	#aucfile="/Users/vungo/Downloads/epigramtest.auc.txt"
-	#fisherfile="/Users/vungo/Downloads/epigramtest.fisher.txt"
+	memefile="/Users/vungo/Downloads/epigramtest.markfull.meme"
+	outfile="/Users/vungo/Downloads/epigramtest.bestmotifs.txt"
+	aucfile="/Users/vungo/Downloads/epigramtest.auc.txt"
+	fisherfile="/Users/vungo/Downloads/epigramtest.fisher.txt"
 	
-	#enrichmentcutoff=1.5
+	enrichmentcutoff=1.5
 	#print pvaluecutoff
 	#read the fisher file:
 	fishertable=[]
@@ -42,31 +42,35 @@ def main():
 		tmp=line.strip().split('\t')
 		aucscores[tmp[1]]=float(tmp[2])
 	#print aucscores
-	listofmotifs=[]
+	listofmotifs={}
 	
 	for line in motifstokeep:
 		if aucscores[line[0]]>0.5:
 			#print line[0],line[1],line[-1],aucscores[line[0]]
 			if line[1]==0:
 				towrite=line[0].split('_')[0]+'_'+str('%.3f' %aucscores[line[0]])
-				listofmotifs+=[towrite]
+				listofmotifs[towrite]=line+[aucscores[line[0]]]
 				#out.write(towrite+'\n')
 			else:
 				towrite=line[0].split('_')[0]+'_'+str('%.3f' %aucscores[line[0]])
-				listofmotifs+=[towrite]
+				listofmotifs[towrite]=line+[aucscores[line[0]]]
 				#out.write(towrite+'\n')
 
 	print "Number of good motifs",len(listofmotifs)
-	print listofmotifs
+	#print listofmotifs
 	motifs=open(memefile).read().split("MOTIF")
 	header=motifs[0]
 	motifs=motifs[1:]
 	motifstoprint=[]
 	
 	for m in listofmotifs:
+		notfound=True
 		for pwm in motifs:
 			if m.strip() in pwm:
+				notfound=False
 				motifstoprint+=[pwm]
+		if notfound:
+			print m,"Not Found",listofmotifs[m]
 	out=open(outfile,'w')
 	out.write(header)
 	for pwm in motifstoprint:
