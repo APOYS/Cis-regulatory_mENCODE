@@ -57,6 +57,7 @@ def main():
 				#out.write(towrite+'\n')
 
 	print "Number of good motifs",len(listofmotifs)
+	print listofmotifs
 	motifs=open(memefile).read().split("MOTIF")
 	header=motifs[0]
 	motifs=motifs[1:]
