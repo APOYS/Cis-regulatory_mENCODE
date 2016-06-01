@@ -16,7 +16,7 @@ def main():
 		tmp=line.strip()
 		if "MOTIF" in line:
 			tmp2=line.replace("MOTIF",'').strip()
-			tmp="MOTIF\t"+prefix+tmp2
+			tmp="MOTIF\t"+prefix+'_'+tmp2
 		out.write(tmp+'\n')
 	out.close()
 	return
