@@ -11,7 +11,7 @@ def main():
 	seqs=open(infile).read().strip().split("MOTIF")
 	seqs=seqs[1:]
 	seq="MOTIF"+"MOTIF".join(seqs)
-	seq=seq.strip()
+	seq=seq.strip()+'\n'
 	if seq=="MOTIF":
 		out=open(outfile,'w')
 		out.write('\n')
