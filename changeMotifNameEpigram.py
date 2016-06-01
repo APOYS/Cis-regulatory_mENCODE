@@ -10,10 +10,14 @@ def main():
 	infile=argv[1]
 	prefix=argv[2]
 	outfile=argv[3]
-	seq=open(infile).read().strip()
-	seq=seq.replace("MOTIF","MOTIF\t"+prefix)
+	seqs=open(infile).read().strip().split('\n')
 	out=open(outfile,'w')
-	out.write(seq)
+	for line in seqs:
+		tmp=line.strip()
+		if "MOTIF" in line:
+			tmp2=line.replace("MOTIF",'').strip()
+			tmp="MOTIF\t"+prefix+tmp2
+		out.write(tmp+'\n')
 	out.close()
 	return
 
