@@ -12,6 +12,7 @@ def main():
 	aucfile=argv[3]
 	enrichmentcutoff=float(argv[4])
 	outfile=argv[5]
+	
 	pvaluecutoff=1e-20
 
 
@@ -41,16 +42,34 @@ def main():
 		tmp=line.strip().split('\t')
 		aucscores[tmp[1]]=float(tmp[2])
 	#print aucscores
-	out=open(outfile,'w')
+	listofmotifs=[]
+	
 	for line in motifstokeep:
 		if aucscores[line[0]]>0.5:
 			#print line[0],line[1],line[-1],aucscores[line[0]]
 			if line[1]==0:
 				towrite=line[0].split('_')[0]+'_'+str('%.3f' %aucscores[line[0]])
-				out.write(towrite+'\n')
+				listofmotifs+=[towrite]
+				#out.write(towrite+'\n')
 			else:
 				towrite=line[0].split('_')[0]+'_'+str('%.3f' %aucscores[line[0]])
-				out.write(towrite+'\n')
+				listofmotifs+=[towrite]
+				#out.write(towrite+'\n')
+
+
+	motifs=open(memefile).read().split("MOTIF")
+	header=motifs[0]
+	motifs=motifs[1:]
+	motifstoprint=[]
+	
+	for m in listofmotifs:
+		for pwm in motifs:
+			if m.strip() in pwm:
+				motifstoprint+=[pwm]
+	out=open(outfile,'w')
+	out.write(header)
+	for pwm in motifstoprint:
+		out.write("MOTIF"+pwm)
 	out.close()
 
 	return
