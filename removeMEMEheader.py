@@ -11,9 +11,15 @@ def main():
 	seqs=open(infile).read().strip().split("MOTIF")
 	seqs=seqs[1:]
 	seq="MOTIF"+"MOTIF".join(seqs)
-	out=open(outfile,'w')
-	out.write(seq)
-	out.close()
+	seq=seq.strip()
+	if seq=="MOTIF":
+		out=open(outfile,'w')
+		out.write('')
+		out.close()
+	else:
+		out=open(outfile,'w')
+		out.write(seq)
+		out.close()
 	return
 
 if __name__=="__main__":
