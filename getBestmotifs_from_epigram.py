@@ -20,7 +20,7 @@ def main():
 	#aucfile="/Users/vungo/Downloads/epigramtest.auc.txt"
 	#fisherfile="/Users/vungo/Downloads/epigramtest.fisher.txt"
 	
-	enrichmentcutoff=1.5
+	#enrichmentcutoff=1.5
 	#print pvaluecutoff
 	#read the fisher file:
 	fishertable=[]
