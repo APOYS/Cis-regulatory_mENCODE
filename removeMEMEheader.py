@@ -14,7 +14,7 @@ def main():
 	seq=seq.strip()
 	if seq=="MOTIF":
 		out=open(outfile,'w')
-		out.write('')
+		out.write('\n')
 		out.close()
 	else:
 		out=open(outfile,'w')
