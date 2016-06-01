@@ -13,7 +13,7 @@ def main():
 
 	motifs=open(memefile).read().strip().split('MOTIF')
 	motifs=motifs[1:]
-	binsize=len(motifs)/k
+	binsize=len(motifs)/k+1
 
 	count=1
 	out=open(memefile+"."+str(count)+".meme",'w')
