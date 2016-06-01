@@ -23,7 +23,7 @@ def main():
 			count+=1
 			out=open(memefile+"."+str(count)+".meme",'w')
 		else:
-			out.write(str(m)+'\n')
+			out.write('MOTIF'+motifs[m]+'\n')
 	out.close()
 	
 	return
