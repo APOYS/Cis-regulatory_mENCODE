@@ -1,8 +1,0 @@
-#!/bin/bash
-#$ -cwd
-#$ -N findpeaks
-#$ -pe smp 1 ##using 1 core
-## #$ -S /bin/bash
-#$ -V
-#cd /home/vungo/Epigram_project/Mouse_ENCODE_cisregulatoryelements/Tagdirs_Homer/Cranio-facial_E11.5/
-python findpeaks.py
