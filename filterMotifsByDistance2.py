@@ -13,7 +13,7 @@ def main():
 	infile=argv[1]
 	Dcutoff=float(argv[2])
 	output=argv[3]
-	pvalueCutoff=1e-10 
+	pvalueCutoff=1e-40
 
 	motifnames={}
 	motifstoremove={}
@@ -53,7 +53,7 @@ def main():
 		pvalueMotif=float(motif.split('_')[-1])
 		if motif not in motifstoremove and pvalueMotif<=pvalueCutoff:
 			motifstokeep+=[motif]
-	print len(motifnames),len(motifstoremove),len(motifnames)-len(motifstoremove)
+	print len(motifnames),len(motifnames)-len(motifstokeep),len(motifstokeep)
 	
 	outfile=open(output,'w')
 	for motif in motifstokeep:
