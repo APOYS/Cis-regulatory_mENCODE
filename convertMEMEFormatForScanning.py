@@ -39,13 +39,13 @@ def main():
 	motifs,infos=load_motifsSpecial(inmeme)
 	motifnames=sorted(motifs.keys())
 	klength=0
-	#count=0
+	count=0
 	for motif in motifnames:
 		klength=len(motifs[motif]['A'])
 		pwm=motifs[motif]
 		#print motif,klength
-		newname=motif+"_"+str(klength)+".motif"
-		#count+=1
+		newname=str(count)+"_motif."+motif+"_"+str(klength)+".motif"
+		count+=1
 		print newname
 		target=open(outputdir+'/'+newname,'w')
 		for i in range(klength):
