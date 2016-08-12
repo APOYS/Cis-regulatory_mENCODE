@@ -76,14 +76,15 @@ def main():
 	coverages={}
 	for file in coveragefiles:
 		
-		peakfile=peakdir+'/'+file.split(".bin500")[0]+".DCC.mark.bin500.bed"
+		peakfile=peakdir+'/'+file.split(".500bin")[0]+".DCC.mark.bin500.bed"
 		#peakfile=peakfile.replace("facial","Facial")
 		#peakfile=peakfile.replace("tube","Tube")
+
 		try:
 			coveragedict=readcoveragefromfile(coveragedir+'/'+file,peakfile)
 			print file
 		except IOError:
-			print "ERORRRRRR!!!!", file,"ERRRORR"
+			print "ERORRRRRR!!!!", file,peakfile,"ERRRORR"
 			pass
 
 		coverages[file]=coveragedict
