@@ -16,6 +16,7 @@ Correlation between the motif and the histone mark
 
 """
 import os
+import sys
 from sys import argv
 from scipy import stats
 def readscorefromfile(file):
