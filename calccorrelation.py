@@ -57,6 +57,9 @@ def main():
 		if "filtered" in file and "bin500" in file and "normalized" in file:
 			coveragefiles+=[file]
 			print file
+	if len(coveragefiles)==0: 
+		print "Error!!! No coverage files!!!"
+		sys.exit(0)
 	print "Loading Motif Score Files ..."
 	
 	scorefiles=[]
