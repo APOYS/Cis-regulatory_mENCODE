@@ -49,7 +49,7 @@ def main():
 	outfile=argv[3] 
 	start=int(argv[4]) #start and end are to select a subset of the files in the scorefiledir
 	end=int(argv[5])
-	peakdir=argv[6] #containing the peak regions for each chip-seq exeriment. (only calculate the corelation within the peak regions)
+	peakdir=argv[6] #containing the peak regions for each chip-seq exeriment. ( so that we only calculate the corelation within the peak regions)
 	coveragefiles=[]
 
 	print "Loading COVERAGE FILES.."
@@ -79,6 +79,7 @@ def main():
 			coveragedict=readcoveragefromfile(coveragedir+'/'+file,peakfile)
 			print file
 		except IOError:
+			print "ERORRRRRR!!!!", file,"ERRRORR"
 			pass
 
 		coverages[file]=coveragedict
