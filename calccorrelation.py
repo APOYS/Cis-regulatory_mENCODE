@@ -55,7 +55,7 @@ def main():
 
 	print "Loading COVERAGE FILES.."
 	for file in os.listdir(coveragedir):
-		if "filtered" in file and "bin500" in file and "normalized" in file:
+		if "bin500" in file and "normalized" in file:
 			coveragefiles+=[file]
 			print file
 	if len(coveragefiles)==0: 
