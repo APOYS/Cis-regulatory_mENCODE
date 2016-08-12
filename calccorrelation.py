@@ -51,9 +51,13 @@ def main():
 	end=int(argv[5])
 	peakdir=argv[6] #containing the peak regions for each chip-seq exeriment. (only calculate the corelation within the peak regions)
 	coveragefiles=[]
+
+	print "Loading COVERAGE FILES.."
 	for file in os.listdir(coveragedir):
-		if "filtered" in file and "bin500" in file:
+		if "filtered" in file and "bin500" in file and "normalized" in file:
 			coveragefiles+=[file]
+			print file
+	print "Loading Motif Score Files ..."
 	
 	scorefiles=[]
 	for file in os.listdir(scorefiledir):
@@ -64,7 +68,7 @@ def main():
 		print file
 	
 
-	print "read covs"
+	print "Read coverages ..."
 	coverages={}
 	for file in coveragefiles:
 		
