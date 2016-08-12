@@ -5,6 +5,15 @@ Input:  files:
 		 1 is the score for each motif. 
 Output:
 Correlation between the motif and the histone mark 
+
+
+	coveragedir=argv[1] #directory containing the coverages of each chip-seq 
+	scorefiledir=argv[2] #directory containing the scores for each motifs 
+	outfile=argv[3] 
+	start=int(argv[4]) #start and end are to select a subset of the files in the scorefiledir
+	end=int(argv[5])
+	peakdir=argv[6] #containing the peak regions for each chip-seq exeriment. (only calculate the corelation within the peak regions)
+
 """
 import os
 from sys import argv
@@ -35,12 +44,12 @@ def readcoveragefromfile(file,peakfile):
 			coveragedict[name]=cov
 	return coveragedict
 def main():
-	coveragedir=argv[1]
-	scorefiledir=argv[2]
-	outfile=argv[3]
-	start=int(argv[4])
+	coveragedir=argv[1] #directory containing the coverages of each chip-seq 
+	scorefiledir=argv[2] #directory containing the scores for each motifs 
+	outfile=argv[3] 
+	start=int(argv[4]) #start and end are to select a subset of the files in the scorefiledir
 	end=int(argv[5])
-	peakdir=argv[6]
+	peakdir=argv[6] #containing the peak regions for each chip-seq exeriment. (only calculate the corelation within the peak regions)
 	coveragefiles=[]
 	for file in os.listdir(coveragedir):
 		if "filtered" in file and "bin500" in file:
