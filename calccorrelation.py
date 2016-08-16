@@ -50,7 +50,7 @@ def main():
 	outfile=argv[3] 
 	start=int(argv[4]) #start and end are to select a subset of the files in the scorefiledir
 	end=int(argv[5])
-	peakdir=argv[6] #containing the peak regions for each chip-seq exeriment. ( so that we only calculate the corelation within the peak regions)
+	peakdir=argv[6] #containing the peak regions for each chip-seq exeriment, binned 500bps. ( so that we only calculate the corelation within the peak regions)
 	coveragefiles=[]
 
 	print "Loading COVERAGE FILES.."
@@ -76,7 +76,7 @@ def main():
 	coverages={}
 	for file in coveragefiles:
 		
-		peakfile=peakdir+'/'+file.split(".500bin")[0]+".DCC.mark.bin500.bed"
+		peakfile=peakdir+'/'+file.split(".bin500")[0]+".DCC.mark.bin500.bed"
 		#peakfile=peakfile.replace("facial","Facial")
 		#peakfile=peakfile.replace("tube","Tube")
 
