@@ -74,7 +74,7 @@ def main():
 
 	print "Read coverages ..."
 	coverages={}
-	for file in coveragefiles:
+	for file in coveragefiles[:10]:
 		
 		peakfile=peakdir+'/'+file.split(".bin500")[0]+".DCC.mark.bin500.bed"
 		#peakfile=peakfile.replace("facial","Facial")
