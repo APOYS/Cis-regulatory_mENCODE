@@ -9,7 +9,8 @@ def main():
 	infile=argv[1]
 	outfile=argv[2]
 	seqs=open(infile).read().strip().split("MOTIF")
-	seqs=seqs[1:]
+	if seqs[0]==[]:
+		seqs=seqs[1:]
 	seq="MOTIF"+"MOTIF".join(seqs)
 	seq=seq.strip()+'\n'
 	if seq=="MOTIF":

@@ -34,7 +34,7 @@ def main():
 	print "Ends with",len(filteredMotifs)
 
 	target = open(outfile,'w')
-	newseq = "MOTIF".join(filteredMotifs)
+	newseq = "MOTIF"+"MOTIF".join(filteredMotifs)
 	target.write(newseq)
 	target.close()
 
