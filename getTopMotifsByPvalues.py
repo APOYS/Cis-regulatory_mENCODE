@@ -1,4 +1,4 @@
-"""This method filters for top k motifs based on their auc and pvalues.
+"""This method filters for top k percent motifs based on their auc and pvalues.
 
 IN: meme file to filter, auc cutoff, pvalue cutoff
 
@@ -10,7 +10,7 @@ from sys import argv
 
 def main():
 	infile = argv[1]
-	k = int(argv[2])
+	k = float(argv[2])
 	outfile = argv[3]
 
 	print "Filtering ",infile
@@ -21,6 +21,7 @@ def main():
 	motifs=open(infile).read().strip().split("MOTIF")
 	motifs=motifs[1:]
 
+	numberofmotifs=int(len(motifs)*k)
 	pvalues=[]
 
 	for m in motifs:
@@ -38,7 +39,7 @@ def main():
 	motifs = [motifs[i] for i in si]
 	
 	target = open(outfile,'w')
-	newseq = "MOTIF"+"MOTIF".join(motifs[:k])
+	newseq = "MOTIF"+"MOTIF".join(motifs[:numberofmotifs])
 	target.write(newseq)
 	target.close()
 
