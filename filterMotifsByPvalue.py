@@ -10,8 +10,8 @@ from sys import argv
 
 def main():
 	infile = argv[1]
-	aucthreshold = argv[2]
-	pvalthreshold = argv[3]
+	aucthreshold = float(argv[2])
+	pvalthreshold = float(argv[3])
 	outfile = argv[4]
 
 	print "Filtering ",infile
