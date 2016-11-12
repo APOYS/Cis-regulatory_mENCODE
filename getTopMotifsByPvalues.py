@@ -14,7 +14,7 @@ def main():
 	outfile = argv[3]
 
 	print "Filtering ",infile
-	print "Number of motifs to keep", k 
+	
 	#print "AUC threshold is",aucthreshold
 	#print "P-value threshold is",pvalthreshold
 
@@ -22,6 +22,7 @@ def main():
 	motifs=motifs[1:]
 
 	numberofmotifs=int(len(motifs)*k)
+	print "Number of motifs to keep", numberofmotifs
 	pvalues=[]
 
 	for m in motifs:
@@ -34,7 +35,7 @@ def main():
 
 
 	#sort the pvalues
-	si = sorted(range(len(pvalues)), key=lambda k: pvalues[k],reverse=False)  #sort by pvalues, get the index
+	si = sorted(range(len(pvalues)), key=lambda x: pvalues[x],reverse=False)  #sort by pvalues, get the index
 	#then reorder the other arrays based on that index
 	motifs = [motifs[i] for i in si]
 	
