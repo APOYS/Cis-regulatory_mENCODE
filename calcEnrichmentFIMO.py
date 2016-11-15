@@ -49,7 +49,7 @@ def main():
 		line = '\t'.join(line)
 		lines += [line]
 	
-	sortedindex = sorted(range(len(pvalues)), key = lambda x: pvalues[x], reverse = True)
+	sortedindex = sorted(range(len(pvalues)), key = lambda x: pvalues[x])
 	lines = [lines[x] for x in sortedindex]
 	target = open(outfile,'w')
 	for line in lines:
