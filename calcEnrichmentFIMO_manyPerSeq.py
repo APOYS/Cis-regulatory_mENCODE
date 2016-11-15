@@ -56,8 +56,8 @@ def main():
 		elif motif not in posdict:
 			poscount = 0
 		else:
-			poscount = posdict[motif]
-			negcount = negdict[motif]
+			poscount = len(posdict[motif])
+			negcount = len(negdict[motif])
 
 		if negcount != 0:
 			enrichment = float(poscount)/negcount
