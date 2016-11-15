@@ -15,7 +15,7 @@ def main():
 	outfile = argv[4]
 
 
-	totalseq = len(open(fastafile).split(">"))-1
+	totalseq = len(open(fastafile).read().split(">"))-1
 	posdict = {}
 	file = open(posfile)
 	file.readline()
