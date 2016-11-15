@@ -41,7 +41,7 @@ def main():
 			break
 		posnum = len(posdict[motif])
 		negnum = len(negdict[motif])
-		enrichment, pvalue = stats.fisher_exact([posnum, totalseq - posnum], [negnum, totalseq - negnum])
+		enrichment, pvalue = stats.fisher_exact([[posnum, totalseq - posnum], [negnum, totalseq - negnum]])
 		line = [motif, str(posnum), str(totalseq - posnum), str(negnum), str(totalseq - negnum), str(enrichment), str(pvalue)]
 		line = '\t'.join(line)
 		target.write(line+'\n')
