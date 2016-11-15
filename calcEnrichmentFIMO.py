@@ -34,7 +34,9 @@ def main():
 			negdict[tmp[0]] = {}
 		negdict[tmp[0]][tmp[1]] = 1 
 
-	target = open(outfile,'w')
+	
+	lines = [] 
+	pvalues = [] 
 	for motif in posdict:
 		if motif not in negdict:
 			print "ERROR, not the same set of motifs"
@@ -42,8 +44,15 @@ def main():
 		posnum = len(posdict[motif])
 		negnum = len(negdict[motif])
 		enrichment, pvalue = stats.fisher_exact([[posnum, totalseq - posnum], [negnum, totalseq - negnum]])
+		pvalues += [pvalue]
 		line = [motif, str(posnum), str(totalseq - posnum), str(negnum), str(totalseq - negnum), str(enrichment), str(pvalue)]
 		line = '\t'.join(line)
+		lines += [line]
+	
+	sortedindex = sorted(range(len(pvalues)), key = lambda x: pvalues[x], reverse = True)
+	lines = [lines[x] for x in sortedindex]
+	target = open(outfile,'w')
+	for line in lines:
 		target.write(line+'\n')
 	target.close()
 
