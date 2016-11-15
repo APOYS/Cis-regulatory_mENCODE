@@ -44,7 +44,7 @@ def main():
 	lines = [] 
 	pvalues = [] 
 	#enrichments = []
-	motifs = posdict.keys():
+	motifs = posdict.keys()
 	for m in negdict:
 		if m not in motifs:
 			motifs += [m]
