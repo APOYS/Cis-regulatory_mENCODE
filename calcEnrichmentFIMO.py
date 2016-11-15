@@ -15,7 +15,7 @@ def main():
 	outfile = argv[4]
 
 
-	totalseq = len(open(fastafile).read().split(">"))-1
+	totalseq = len(open(fastafile).read().split(">")) - 1
 	posdict = {}
 	file = open(posfile)
 	file.readline()
@@ -37,14 +37,16 @@ def main():
 	
 	lines = [] 
 	pvalues = [] 
+	#enrichments = []
 	for motif in posdict:
 		if motif not in negdict:
 			print "ERROR, not the same set of motifs"
 			break
 		posnum = len(posdict[motif])
 		negnum = len(negdict[motif])
-		enrichment, pvalue = stats.fisher_exact([[posnum, totalseq - posnum], [negnum, totalseq - negnum]],alternative = "greater")
+		enrichment, pvalue = stats.fisher_exact([[posnum, totalseq - posnum], [negnum, totalseq - negnum]])
 		pvalues += [pvalue]
+		#enrichments = [enrichment]
 		line = [motif, str(posnum), str(totalseq - posnum), str(negnum), str(totalseq - negnum), str(enrichment), str(pvalue)]
 		line = '\t'.join(line)
 		lines += [line]
