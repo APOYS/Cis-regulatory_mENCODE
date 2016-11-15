@@ -1,0 +1,55 @@
+
+"""
+IN: Positive FIMO result, DS FIMO result, fasta file, out file
+
+OUT: enrichemtns of the motifs in the sequences. 
+"""
+
+from sys import argv
+from scipy.stats import stats
+
+def main():
+	posfile = argv[1]
+	negfile = argv[2]
+	fastafile = argv[3]
+	outfile = argv[4]
+
+
+	totalseq = len(open(fastafile).split(">"))-1
+	posdict = {}
+	file = open(posfile)
+	file.readline()
+	for line in file:
+		tmp = line.strip().split('\t')
+		if tmp[0] not in posdict:
+			posdict[tmp[0]] = {}
+		posdict[tmp[0]][tmp[1]] = 1 
+
+	negdict = {}
+	file = open(negfile)
+	file.readline()
+	for line in file:
+		tmp = line.strip().split('\t')
+		if tmp[0] not in negdict:
+			negdict[tmp[0]] = {}
+		negdict[tmp[0]][tmp[1]] = 1 
+
+	target = open(outfile,'w')
+	for motif in posdict:
+		if motif not in negdict:
+			print "ERROR, not the same set of motifs"
+			break
+		posnum = len(posdict[motif])
+		negnum = len(negdict[motif])
+		enrichment, pvalue = stats.fisher_exact([posnum, totalseq - posnum], [negnum, totalseq - negnum])
+		line = [motif, str(posnum), str(totalseq - posnum), str(negnum), str(totalseq - negnum), str(enrichment), str(pvalue)]
+		line = '\t'.join(line)
+		target.write(line+'\n')
+	target.close()
+
+	return
+
+
+
+if __name__=="__main__":
+	main()
