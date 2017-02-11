@@ -106,7 +106,7 @@ def format_mutation_and_genotype(mutationinputfile,tag,snp_location_out,genotype
     
     #mutations["chrX_1"]=1
     translatedict = {}
-    for i in range(1,24):
+    for i in range(1,25):
         c = 'chr'+str(i)
         translatedict[c] =c 
     #translatedict
