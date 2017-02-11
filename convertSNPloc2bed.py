@@ -24,6 +24,8 @@ def main():
 	for line in file:
 		line = line.strip().split('\t')
 		chrom = line[1]
+		if chrom == "chr23":
+			continue
 		start = str(int(line[2]) - k)
 		end = str(int(line[2]) + k)
 		nl = chrom+'\t'+start+'\t'+end
