@@ -41,7 +41,7 @@ covariates_file_name =  args[5] #"~/Work/testCovariate.txt";
 
 table = read.csv(covariates_file_name,sep='\t')
 L = unname(unlist(table))
-if (0 %in% L) #check if any normal sample in it
+if (0 %in% L) 
     {
     covariates_file_name = covariates_file_name
     } 
