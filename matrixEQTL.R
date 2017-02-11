@@ -12,7 +12,7 @@ require("MatrixEQTL")
 geneExfile = args[1];
 
 data = read.csv(geneExfile,sep='\t',row.names =1);
-data.log = log(data[,1:44]+1) #adding 1 solves the log(0) problem
+data.log = log(data+1) #adding 1 solves the log(0) problem
 
 lognormedExpressionfile = paste(geneExfile,"lognorm",sep='.');
 write.table(data.log, file = lognormedExpressionfile,quote=FALSE, sep ='\t');
