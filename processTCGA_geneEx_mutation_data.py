@@ -35,7 +35,7 @@ def get_final_sample_set(geneexpression_file,mutation_file):
 #        add this sample to final sample set
     
     samples_with_expression = open(geneexpression_file).readline().strip().split('\t')[1:]
-    for i in range(len(samples_in_expression)):
+    for i in range(len(samples_with_expression)):
         samples_with_expression[i] = '-'.join(samples_with_expression[i].split('-')[:4])
         
     samples_with_mutation = {}
@@ -275,18 +275,18 @@ tag = argv[4]
 # directory containg all 5 requireed files
 outdir = argv[5]
 
-os.system("mkdir "+outdir`)
+os.system("mkdir "+outdir)
 
 #snp_locationoutut = argv[5]
-snp_locationoutut = dir+'/'+tag+".snp_locations.txt"
+snp_locationoutut = outdir+'/'+tag+".snp_locations.txt"
 
-genotypeout = dir+'/'+tag+".genotype.txt"
+genotypeout = outdir+'/'+tag+".genotype.txt"
 
-covariatefile =dir+'/'+tag+".covariates.txt"
+covariatefile = outdir+'/'+tag+".covariates.txt"
 
-genelocation_out = dir +'/'+tag+".genelocations.txt"
+genelocation_out = outdir +'/'+tag+".genelocations.txt"
 
-geneexpression_out = dir +'/'+tag+".geneexpressions.txt"
+geneexpression_out = outdir +'/'+tag+".geneexpressions.txt"
 
 
 
