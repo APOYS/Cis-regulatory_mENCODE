@@ -39,6 +39,19 @@ gene_location_file_name = args[4] #"~/Work/testGenelocations.txt";
 #covariates_file_name = paste(base.dir, "/data/Covariates.txt", sep="");
 covariates_file_name =  args[5] #"~/Work/testCovariate.txt";
 
+table = read.csv(covariates_file_name,sep='\t')
+L = unname(unlist(table))
+if (0 %in% L) #check if any normal sample in it
+    {
+    covariates_file_name = covariates_file_name
+    } 
+else 
+    {
+    covariates_file_name = character()
+    }
+
+
+
 # Output file name
 output_file_name_cis = args[6] #"~/Work/CHOL_eqtl_cis.tsv";
 output_file_name_tra = args[7] #"~/Work/CHOL_eqtl_trans.tsv";
