@@ -146,7 +146,7 @@ def format_mutation_and_genotype(mutationinputfile,tag,snp_location_out,genotype
             elif chromname == 'chr27':
                 chromname = 'chrM'
             else:
-                print "ERROR"
+                print "ERROR",chromname
                 continue
         mutname = "snp_"+tag+"_"+str(i+1)
         mutnames[mutname] = chromname+'_'+str(loc%factor)
