@@ -1,3 +1,5 @@
+
+
 import pandas as pd
 from sys import argv
 import os
@@ -83,7 +85,9 @@ def makecovariate(finalsampleset,outfile):
     
     return
 
-def format_mutation_and_genotype(mutationinputfile,tag,snp_location_out,genotype_out,finalsampleset):   
+def format_mutation_and_genotype(mutationinputfile,tag,snp_location_out,genotype_out,finalsampleset,snp_info_out):   
+    
+    # read mutationinput 
     file = open(mutationinputfile).read().split('\n')
     print len(file)
     mutations = {}
@@ -95,9 +99,9 @@ def format_mutation_and_genotype(mutationinputfile,tag,snp_location_out,genotype
         mut = tmp[1]+'_'+tmp[2]
         sam = '-'.join(tmp[0].split('-')[:4])
         if mut not in mutations:
-            mutations[mut] = 1
+            mutations[mut] = ['\t'.join(tmp[4:])]
         else:
-            mutations[mut] += 1
+            mutations[mut] += ['\t'.join(tmp[4:])]
         if sam not in samples:
             samples[sam] = {mut:1}
         else:
@@ -119,7 +123,7 @@ def format_mutation_and_genotype(mutationinputfile,tag,snp_location_out,genotype
     target = open(snp_location_out,'w')
     target.write("snp\tchr\tpos")
     mutationlocs = []
-    factor = 10**12
+    factor = 10**12 #use this to sort
     for mut in mutations:
         tmp = mut.split('_')
         try:
@@ -155,6 +159,15 @@ def format_mutation_and_genotype(mutationinputfile,tag,snp_location_out,genotype
         #print line
         target.write('\n'+line)
     target.close()
+    
+    # printing mutation info file
+    target = open(snp_info_out,'w')
+    for mut in mutnames:
+        info = mutations[mutnames[mut]]
+        line = mut+'\t'+ mutnames[mut].replace('_','\t')+'\t'+info[0]
+        target.write(line+'\n')
+    target.close()
+    
     
     ### Printing the genotype file
     #samplenames = sorted(samples.keys())
@@ -273,12 +286,18 @@ tag = argv[4]
 #tag = "CHOL"
 
 # directory containg all 5 requireed files
+
+
 outdir = argv[5]
+#outdir = "/Users/vungo/Work/"
 
 os.system("mkdir "+outdir)
 
 #snp_locationoutut = argv[5]
+
 snp_locationoutut = outdir+'/'+tag+".snp_locations.txt"
+
+snp_info_out = outdir+'/'+tag+".snp_info.txt"
 
 genotypeout = outdir+'/'+tag+".genotype.txt"
 
@@ -293,7 +312,7 @@ geneexpression_out = outdir +'/'+tag+".geneexpressions.txt"
 #get the final sample set
 finalsampleset = get_final_sample_set(geneexpression_file,mutationfile)
 
-format_mutation_and_genotype(mutationfile,tag,snp_locationoutut,genotypeout,finalsampleset)
+format_mutation_and_genotype(mutationfile,tag,snp_locationoutut,genotypeout,finalsampleset,snp_info_out)
 
 format_geneloc_and_geneexpression(ucsc_loc_file,geneexpression_file,tag,genelocation_out,geneexpression_out,finalsampleset)
 
