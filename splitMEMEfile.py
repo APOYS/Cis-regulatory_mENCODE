@@ -12,6 +12,7 @@ def main():
 	#k=15
 
 	motifs=open(memefile).read().strip().split('MOTIF')
+	header = motifs [0]
 	motifs=motifs[1:]
 	binsize=len(motifs)/k+1
 
@@ -22,9 +23,9 @@ def main():
 			out.close()
 			count+=1
 			out=open(memefile+"."+str(count)+".meme",'w')
-			out.write('MOTIF'+motifs[m]+'\n')
+			out.write(header+'MOTIF'+motifs[m]+'\n')
 		else:
-			out.write('MOTIF'+motifs[m]+'\n')
+			out.write(header+'MOTIF'+motifs[m]+'\n')
 	out.close()
 	
 	return
