@@ -37,7 +37,7 @@ def main():
     outfile = argv[2]
     motifs, infos,header = load_MEME(infile)
 
-    print header
+    #print header
 
     target = open(outfile,'w')
     target.write(header)
