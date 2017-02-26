@@ -21,7 +21,7 @@ def main():
 			content = content.replace("DIR", indir)
 			content = content.replace("OUTPUT", meme)
 			content = content.replace("FASTA", fasta)
-			target = open(file+".qsub")
+			target = open(file+".qsub",'w')
 			target.write(content)
 			target.close()
 
