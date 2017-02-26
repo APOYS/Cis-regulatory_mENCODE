@@ -48,7 +48,7 @@ def main():
         order = range(len(pwm['A']))
         randomorder = rd.sample(order,len(order))
         #print '\n'.join(info)
-        content = '\n'.join(info)
+        content = 'MOTIF\t'+'\n'.join(info)
         for pos in randomorder:
             charrandomorder = rd.sample(pwm.keys(),len(pwm.keys()))
             line = []
