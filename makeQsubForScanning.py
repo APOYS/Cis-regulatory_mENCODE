@@ -19,7 +19,7 @@ def main():
 			output = file+".scanned"
 			content = template.replace("MEME", indir +'/'+meme)
 			content = content.replace("DIR", indir)
-			content = content.replace("OUTPUT", meme)
+			content = content.replace("OUTPUT", outdir+'/'+output)
 			content = content.replace("FASTA", fasta)
 			target = open(file+".qsub",'w')
 			target.write(content)
