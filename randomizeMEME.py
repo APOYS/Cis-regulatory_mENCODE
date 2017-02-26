@@ -17,6 +17,8 @@ def load_MEME(filename):
     for m in motifs:
         tdict={'A':[],'C':[],'G':[],'T':[]}
         for pos in range(len(motifs[m])):
+            if "URL" in motifs[m][pos]:
+                continue
             tmp=motifs[m][pos].strip().split("\t")
             tdict['A']+=[float(tmp[0])]
             tdict['C']+=[float(tmp[1])]
