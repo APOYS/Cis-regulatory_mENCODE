@@ -17,7 +17,7 @@ def main():
 		if "meme" in file and "scanned" not in file:
 			meme = file
 			output = file+".scanned"
-			content = template.replace("MEME", meme)
+			content = template.replace("MEME", indir +'/'+meme)
 			content = content.replace("OUTPUT", meme)
 			content = content.replace("FASTA", fasta)
 			target = open(file+".qsub")
