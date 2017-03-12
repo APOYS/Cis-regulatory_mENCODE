@@ -20,7 +20,7 @@ def main():
 			content = content.replace("DIR", indir)
 			content = content.replace("OUTPUT", outdir+'/'+output)
 			content = content.replace("BEDREGIONS", regions)
-			target = open(file+".qsub",'w')
+			target = open(file+"."+tag+".qsub",'w')
 			target.write(content)
 			target.close()
 
