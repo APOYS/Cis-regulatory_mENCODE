@@ -13,7 +13,7 @@ def main():
 	print template
 
 	for file in os.listdir(indir):
-		if "meme" in file and "scanned" not in file and "qsub" not in file:
+		if "meme" in file and "scanned" not in file and "qsub" not in file and "bed" not in file:
 			meme = file
 			output = file+"."+tag+".scanned"
 			content = template.replace("MEME", indir +'/'+meme)
