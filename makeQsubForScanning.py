@@ -1,8 +1,6 @@
 from sys import argv
 import os
 
-
-
 def main():
 	indir = argv[1] #containing a dir for of separate motifs in meme format
 	regions = argv[2]
