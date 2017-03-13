@@ -17,6 +17,7 @@ def main():
 			meme = file
 			output = file+"."+tag+".scanned"
 			content = template.replace("MEME", indir +'/'+meme)
+			content = content.replace("<TAG>",tag)
 			content = content.replace("DIR", indir)
 			content = content.replace("OUTPUT", outdir+'/'+output)
 			content = content.replace("BEDREGIONS", regions)
