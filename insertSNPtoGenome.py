@@ -1,6 +1,10 @@
 from sys import argv
 
-
+"""
+	snpbedgraph = argv[1]
+	genomefile = argv[2]
+	outfile = argv[3]
+"""
 #read the genome:
 def loadrefgenomefile(filename):
     #reads the reference genome from a single fasta file
