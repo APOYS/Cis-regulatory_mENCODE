@@ -7,6 +7,15 @@ OUT: produce a more complete file with SNP locations
 
 from sys import argv
 
+def complement(s): 
+    basecomplement = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A'} 
+    letters = list(s) 
+    letters = [basecomplement[base] for base in letters] 
+    return ''.join(letters)
+def revcom(s):
+    return complement(s[::-1])
+
+
 def main():
 	infile = argv[1]
 	outfile = argv[2]
@@ -34,6 +43,15 @@ def main():
 		#print chrom,start,end
 		refseq = tmp[7]
 		snpseq = tmp[11]
+		refstrand = tmp[4]
+		snpstrand = tmp[8]
+		#print refstrand,refseq,snpstrand,snpseq
+
+		if refstrand == "-":
+			refseq = revcom(refseq.upper())
+		if snpstrand =="-":
+			snpsseq = revcom(snpseq.upper())
+		#print refseq,snpseq
 		snploc = 0
 		for i in range(len(refseq)):
 			if refseq[i]!=snpseq[i]:
