@@ -20,7 +20,7 @@ def main():
 	lines = lines[1:]
 
 	target.write(header+'\t'+"SNPloc"+'\n')
-	for line in lines[:10]:
+	for line in lines:
 		tmp = line.split('\t')
 		print tmp
 		seq = tmp[1]
