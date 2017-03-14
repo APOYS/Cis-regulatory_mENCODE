@@ -37,10 +37,10 @@ def main():
 		snploc = 0
 		for i in range(len(refseq)):
 			if refseq[i]!=snpseq[i]:
-				print i
+				#print i
 				snploc = start + i
 				break
-		print refseq,snpseq,snploc
+		#print refseq,snpseq,snploc
 		newline = '\t'.join(tmp)+'\t'+chrom+'_'+str(snploc)
 		target.write(newline+'\n')
 	target.close()
