@@ -50,7 +50,7 @@ def main():
 		if refstrand == "-":
 			refseq = revcom(refseq.upper())
 		if snpstrand =="-":
-			snpsseq = revcom(snpseq.upper())
+			snpseq = revcom(snpseq.upper())
 		#print refseq,snpseq
 		snploc = 0
 		for i in range(len(refseq)):
