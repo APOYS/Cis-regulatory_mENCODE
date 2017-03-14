@@ -22,7 +22,7 @@ def main():
 	target.write(header+'\t'+"SNPloc"+'\n')
 	for line in lines:
 		tmp = line.split('\t')
-		print tmp
+		#print tmp
 		seq = tmp[1]
 		#seqsplit = seq.split(':')
 		chrom = seq.split(':')[0]
