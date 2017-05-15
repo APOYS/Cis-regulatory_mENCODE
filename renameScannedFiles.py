@@ -9,7 +9,7 @@ def main():
 	firstline = open(infile).readline()
 	newname = infilepath + firstline.split()[3]+'.meme.scanned'
 	command = "ln -s %s %s" %(infile,newname)
-	os.system(comamnd)
+	os.system(command)
 	return
 
 if __name__=="__main__":
