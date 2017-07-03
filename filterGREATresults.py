@@ -15,6 +15,7 @@ binorm = 0.05
 hyper = 0.05
 for line in open("tmp.file"):
 	tmp = line.strip().split()
+	print tmp
 	if float(tmp[6]) < binorm and float(tmp[15]) < hyper:
 		L = '\t'.join([tmp[0],tmp[2],tmp[4],tmp[6],tmp[13],tmp[15],tmp[23]])
 		print L
