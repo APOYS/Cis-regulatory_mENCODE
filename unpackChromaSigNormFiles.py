@@ -22,4 +22,6 @@ def main():
 
 	cmd = "/home/vungo/tools/bin2txttool/bin2txt %s 1 %s > %s" %(binfile, chromsizes[chromname],outfile)
 	os.system(cmd)
+
+main ()
 			
