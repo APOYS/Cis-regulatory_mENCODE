@@ -24,6 +24,18 @@ def main():
 	print cmd 
 	os.system(cmd)
 
+	#combine the result into a bedgraph file
+	lines = open(outfile).readlines()
+	out = open(outfile,'w')
+	for i in range(chromsizes[chromname]-1):
+		s = str(i*100)
+		e = str((i +1) *100)
+		line = chromname +'\t'+ s+'\t'+e+'\t'+lines[i]
+		out.write(line)
+	line = chromname +'\t'+ e+'\t'+str(chromsizes[chromname])+'\t'+lines[i]
+	out.write(line)
+	out.close()
+
 if __name__ == "__main__":
 	main()
 			
