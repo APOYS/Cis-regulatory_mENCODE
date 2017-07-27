@@ -21,7 +21,9 @@ def main():
 		chromsizes[tmp[0]] = int(tmp[1])/100 +1   #number of bins
 
 	cmd = "/home/vungo/tools/bin2txttool/bin2txt %s 1 %s > %s" %(binfile, chromsizes[chromname],outfile)
+	print cmd 
 	os.system(cmd)
 
-main ()
+if __name__ == "__main__":
+	main()
 			
