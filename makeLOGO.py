@@ -182,10 +182,11 @@ def main():
             PWM=motifs[m]
             name=infos[m][0]
             name=name.replace("MOTIF",'').strip()
-            if "m-motif" in name:
-                name=nametag+"_"+name.split("_")[0]+"_m-motif"
-            else:
-                name=nametag+"_"+name
+            if nametag != "":
+                if "m-motif" in name:
+                    name=nametag+"_"+name.split("_")[0]+"_m-motif"
+                else:
+                    name=nametag+"_"+name
                 
             target=open("tmp.weblogo.faa",'w')
             for i in range(1000):
@@ -208,10 +209,11 @@ def main():
             PWM=motifs[m]
             name=infos[m][0]
             name=name.replace("MOTIF",'').strip()
-            if "m-motif" in name:
-                name=nametag+"_"+name.split("_")[0]+"_m-motif"
-            else:
-                name=nametag+"_"+name.split("_")[0]
+            if nametag != "":
+                if "m-motif" in name:
+                    name=nametag+"_"+name.split("_")[0]+"_m-motif"
+                else:
+                    name=nametag+"_"+name.split("_")[0]
             	
             target=open("tmp.weblogo.faa",'w')
             for i in range(1000):
