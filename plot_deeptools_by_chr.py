@@ -122,7 +122,7 @@ def main():
 
 	#remove all the 5000 files in outDir
 	cmd = "rm %s/*5000" %(outDir)
-	os.system(cmd)	
+	#os.system(cmd)	
 
 	return
 
