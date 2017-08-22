@@ -38,6 +38,7 @@ marks = ["H3K4me1","H3K4me3","H3K9me3","H3K27me3","H3K27ac","H3K36me3"]
 
 files = [inDir + x for x in os.listdir(inDir)]
 for type in types:
+	qsubfile = open(type+'.'+mark+".qsub",'w')
 	for mark in marks:
 		#get the regions 
 		regionfiles = ''
@@ -45,13 +46,12 @@ for type in types:
 			if type in file and mark in file and "gz" not in file:
 				regionfiles += file +' '
 
-		outputfile = type+'.'+mark+bigwigfile.split('/')[-1]+'.gz'
-
-		content  = computeMatrixTemplate.replace("BIGWIG", bigwigfile).replace("REGIONS",regionfiles).replace("RANDOMFILE",randomBedfile).replace("OUTPUT",outputfile)
-		print content
-		qsubfile = open(type+'.'+mark+".qsub",'w')
-		qsubfile.write(content)
-		qsubfile.close()
+	outputfile = type+'.'+mark+bigwigfile.split('/')[-1]+'.gz'
+	content  = computeMatrixTemplate.replace("BIGWIG", bigwigfile).replace("REGIONS",regionfiles).replace("RANDOMFILE",randomBedfile).replace("OUTPUT",outputfile)
+	print content
+		
+	qsubfile.write(content)
+	qsubfile.close()
 
 
 
