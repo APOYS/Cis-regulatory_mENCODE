@@ -1,6 +1,10 @@
 #!/bin/env python
 import argparse
 import os
+import time, threading
+ 
+
+
 
 
 def main():
@@ -47,11 +51,12 @@ def main():
 	#read the files in the input dir
 	# make the random regions
 	
-
+	numinputfiles = 0
 	inFiles = os.listdir(inDir)
 	for file in inFiles:
 		if "qsub" in file:
 			continue
+		numinputfiles += 1
 		outqsubfile = open(inDir+'/'+file+".plotdeep.qsub",'w')
 
 		
@@ -72,6 +77,20 @@ def main():
 			os.system("qsub "+inDir+file)
 
 
+	#wait until all the result files are in outDir
+
+	while True:
+		print "Checking if all the files are in outDir"
+		numresultfiles = 0
+		for file in os.listdir(outDir):
+			if "chr" in file and "H3K" in file:
+			numresultfiles += 1
+		if numresultfiles == len(chromlist)*numinputfiles:
+			print "All files are here. Proceeed..."
+			break
+		else:
+			print "keep waiting..."
+			time.sleep(30)
 
 	return
 
