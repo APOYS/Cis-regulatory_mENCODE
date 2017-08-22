@@ -106,7 +106,7 @@ def main():
 		
 		for type in types:
 			for mark in marks:
-				cmd = "cat "+outDir+'/'+"%s*%s*%s*5000 > %s/%s/%s.%s.combined.bed" %(type,mark,chrom,outDir,chrom,type,mark)
+				cmd = "cat "+outDir+'/'+"%s*%s*.%s.*5000 > %s/%s/%s.%s.combined.bed" %(type,mark,chrom,outDir,chrom,type,mark)
 				os.system(cmd)
 				print cmd
 
