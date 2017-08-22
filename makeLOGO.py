@@ -195,7 +195,7 @@ def main():
                 target.write(kmer+"\n")
             target.close()
             #os.system("weblogo --format png --size large --title 'Motif "+str(m)+"' -a ACGTE  --color '#CC0000' A 'a' --color '#008000' T 'Py' --color '#0000CC' C 'c' -C '#CC00CC' E 'e' -C '#FFB300' G 'g' <tmp.faa > " +resultdir+"/Motif"+str(m)+".png")
-            os.system("weblogo --format eps --size large -a ACGT  --color '#CC0000' A 'a' --color '#008000' T 't' --color '#0000CC' C 'c' --color '#CC00CC' E 'e' --color '#FFB300' G 'g' <tmp.weblogo.faa> " +resultdir+"/"+name+".eps")
+            os.system("weblogo --format png --size large -a ACGT  --color '#CC0000' A 'a' --color '#008000' T 't' --color '#0000CC' C 'c' --color '#CC00CC' E 'e' --color '#FFB300' G 'g' <tmp.weblogo.faa> " +resultdir+"/"+name+".png")
 
         os.system('rm tmp.weblogo.faa')
 
@@ -222,7 +222,7 @@ def main():
                 target.write(kmer+"\n")
             target.close()
             #os.system("weblogo --format png --size large --title 'Motif "+str(m)+"' -a ACGTE  --color '#CC0000' A 'a' --color '#008000' T 'Py' --color '#0000CC' C 'c' -C '#CC00CC' E 'e' -C '#FFB300' G 'g' <tmp.faa > " +resultdir+"/Motif"+str(m)+".png")
-            os.system("weblogo --format eps --size large -a ACGTE  --color '#CC0000' A 'a' --color '#008000' T 'Py' --color '#0000CC' C 'c' -C '#CC00CC' E 'e' -C '#FFB300' G 'g' <tmp.weblogo.faa> " +resultdir+"/"+name+".eps")
+            os.system("weblogo --format png --size large -a ACGTE  --color '#CC0000' A 'a' --color '#008000' T 'Py' --color '#0000CC' C 'c' -C '#CC00CC' E 'e' -C '#FFB300' G 'g' <tmp.weblogo.faa> " +resultdir+"/"+name+"png")
 
         os.system('rm tmp.weblogo.faa')
     return

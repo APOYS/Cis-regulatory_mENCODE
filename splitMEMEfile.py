@@ -2,12 +2,22 @@
 IN: MEMEfile, number of subfile k
 OUT: k subfiles 
 """
-
+import argparse
 from sys import argv
 
+
+
+
+
 def main():
-	memefile=argv[1]
-	k=int(argv[2])
+	parser = argparse.ArgumentParser()
+	parser.add_argument("-m", "--memefile", help="input meme file, support wildcard")
+	parser.add_argument("-k", "--knum", help="max number of individual files")
+
+
+	args = parser.parse_args()
+	memefile=args.memefile
+	k=int(args.knum)
 
 	#k=15
 
