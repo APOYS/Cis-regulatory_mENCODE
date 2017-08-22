@@ -50,7 +50,7 @@ for type in types:
 			if type in file and mark in file and ".gz" not in file and ".qsub" not in file and ".eps" not in file:
 				regionfiles += file +' '
 
-	outputfile = type+'.'+mark+bigwigfile.split('/')[-1]+'.gz'
+	outputfile = type+'.'+mark+'.'+bigwigfile.split('/')[-1]+'.gz'
 	content  = computeMatrixTemplate.replace("BIGWIG", bigwigfile).replace("REGIONS",regionfiles).replace("RANDOMFILE",randomBedfile).replace("OUTPUT",outputfile)
 	print content
 		
