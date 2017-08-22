@@ -89,7 +89,7 @@ def main():
 				print "All files are here. Proceeed..."
 				break
 			else:
-				print "keep waiting..."
+				print "Found %s files. Keep waiting for %s files ..." %(str(numresultfiles), str(len(chromlist)*numinputfiles - numresultfiles))
 				time.sleep(30)
 
 	return
