@@ -60,7 +60,7 @@ def main():
 		outqsubfile = open(inDir+'/'+file+".plotdeep.qsub",'w')
 
 		
-		cmd = """grep -P 'CHROM\t' INFILE| cut -f1,2,3|shuf|head -5000 >OUTFILE"""
+		cmd = """grep -P 'CHROM\\t' INFILE| cut -f1,2,3|shuf|head -5000 >OUTFILE"""
 		infile = inDir+'/'+file
 		content = tmp.replace("YOURDIR",'wd')
 
@@ -100,7 +100,7 @@ def main():
 		cmd = "mkdir "+outDir+'/'+chrom 
 		os.system(cmd)
 		
-		types = ["Con.Same","Con.Different","Con.Similar","UnCon","Con"]
+		types = ["Con.Same","Con.Different","Con.Similar","Uncon","Con"]
 		marks = ["H3K4me1","H3K4me3","H3K9me3","H3K27me3","H3K27ac","H3K36me3"]
 		
 		for type in types:
