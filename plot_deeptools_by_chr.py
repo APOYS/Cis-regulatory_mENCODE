@@ -93,7 +93,12 @@ def main():
 			time.sleep(30)
 	# remove all the qsub.e/o files in inDir
 	cmd = "rm %s/*qsub.*" %(inDir)
-	os.system(cmd)
+	try:
+		os.system(cmd)
+	except:
+		continue
+
+	
 
 	return
 
