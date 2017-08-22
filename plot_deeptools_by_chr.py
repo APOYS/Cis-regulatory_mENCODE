@@ -85,12 +85,15 @@ def main():
 		for file in os.listdir(outDir):
 			if "chr" in file and "H3K" in file:
 				numresultfiles += 1
-			if numresultfiles == len(chromlist)*numinputfiles:
-				print "All files are here. Proceeed..."
-				break
-			else:
-				print "Found %s files. Keep waiting for %s files ..." %(str(numresultfiles), str(len(chromlist)*numinputfiles - numresultfiles))
-				time.sleep(30)
+		if numresultfiles == len(chromlist)*numinputfiles:
+			print "All files are here. Proceeed..."
+			break
+		else:
+			print "Found %s files. Keep waiting for %s files ..." %(str(numresultfiles), str(len(chromlist)*numinputfiles - numresultfiles))
+			time.sleep(30)
+	# remove all the qsub.e/o files in inDir
+	cmd = "rm %s/*qsub.*" %(inDir)
+	os.system(cmd)
 
 	return
 
