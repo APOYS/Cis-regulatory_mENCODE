@@ -18,7 +18,7 @@ randomBedfile = args.randomBedfile
 for file in os.listdir(inDir):
 	if os.stat(inDir+file).st_size == 0:
 		print "Empty, remove file", file
-		os.sysem("rm "+inDir+'/'+file)
+		os.system("rm "+inDir+'/'+file)
 
 
 
@@ -51,4 +51,4 @@ for type in types:
 		print content
 
 
-		
+
