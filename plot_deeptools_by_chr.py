@@ -72,9 +72,10 @@ def main():
 		outqsubfile.write(content)
 		outqsubfile.close()
 
-	for file in os.listdir(inDir):
+	'''for file in os.listdir(inDir):
 		if ".plotdeep.qsub" in file:
 			os.system("qsub "+inDir+file)
+	'''
 
 
 	#wait until all the result files are in outDir
