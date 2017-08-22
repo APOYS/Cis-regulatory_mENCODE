@@ -19,6 +19,9 @@ for file in os.listdir(inDir):
 	if os.stat(inDir+file).st_size == 0:
 		print "Empty, remove file", file
 		os.system("rm "+inDir+'/'+file)
+	if "Con.H3K" in file and "qsub" not in file and ".gz" not in file and ".eps" not in file and "JustCon" not in file:
+		cmd = "mv %s %s" %(file,file.replace("Con.H3K","JustCon.H3K"))
+		os.system(cmd)
 
 
 
