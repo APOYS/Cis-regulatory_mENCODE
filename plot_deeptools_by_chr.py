@@ -60,7 +60,7 @@ def main():
 		content = tmp.replace("YOURDIR",'wd')
 
 		for chrom in chromlist:
-			outfile = outDir+'/'+infile +'.'+chrom+'.5000'
+			outfile = outDir+'/'+file +'.'+chrom+'.5000'
 			newcmd = cmd.replace("CHROM",chrom).replace("INFILE",infile).replace("OUTFILE",outfile)
 			content += newcmd +'\n'
 
