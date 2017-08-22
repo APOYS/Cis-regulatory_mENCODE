@@ -41,8 +41,8 @@ def main():
 #$ -S /bin/bash
 #$ -V
 
-cd YOURDIR
-		"""
+#cd YOURDIR
+"""
 
 	#read the files in the input dir
 	# make the random regions
