@@ -92,11 +92,9 @@ def main():
 			print "Found %s files. Keep waiting for %s files ..." %(str(numresultfiles), str(len(chromlist)*numinputfiles - numresultfiles))
 			time.sleep(30)
 	# remove all the qsub.e/o files in inDir
-	cmd = "rm %s/*qsub.*" %(inDir)
+	cmd = "rm *qsub.*" 
 	
-	try:
-		os.system(cmd)
-
+	os.system(cmd)
 
 
 	return
