@@ -56,7 +56,7 @@ def main():
 
 		
 		cmd = """grep -P 'CHROM\t' INFILE| cut -f1,2,3|shuf|head -5000 >OUTFILE"""
-		infile = file
+		infile = inDir+'/'+file
 		content = tmp.replace("YOURDIR",'wd')
 
 		for chrom in chromlist:
