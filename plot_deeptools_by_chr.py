@@ -24,7 +24,7 @@ def main():
 	bwFile = args.bigwigfile
 	genome = args.genome
 	chromlist = []
-	if genome == "h19":
+	if genome == "hg19":
 		chromlist = ["chr1","chr2","chr3","chr4","chr5","chr6","chr7","chr8","chr9","chr10",
 		"chr11","chr12","chr13","chr14","chr15","chr16","chr17","chr18","chr19","chr20",
 		"chr21","chr22","chrX","chrY"]
@@ -32,7 +32,7 @@ def main():
 		chromlist = ["chr1","chr2","chr3","chr4","chr5","chr6","chr7","chr8","chr9","chr10",
 		"chr11","chr12","chr13","chr14","chr15","chr16","chr17","chr18","chr19","chrX","chrY"]
 	else:
-		print "ERROR"
+		print "ERROR, please specify the genome"
 
 	tmp = """#!/bin/bash
 #$ -cwd
@@ -62,7 +62,7 @@ cd YOURDIR
 		for chrom in chromlist:
 			outfile = outDir+'/'+infile +'.'+chrom+'.5000'
 			newcmd = cmd.replace("CHROM",chrom).replace("INFILE",infile).replace("OUTFILE",outfile)
-			content += cmd +'\n'
+			content += newcmd +'\n'
 
 		outqsubfile.write(content)
 		outqsubfile.close()
