@@ -52,7 +52,7 @@ def main():
 	for file in inFiles:
 		if "qsub" in file:
 			continue
-		outqsubfile = open(inDir+'/'+file+".qsub",'w')
+		outqsubfile = open(inDir+'/'+file+".plotdeep.qsub",'w')
 
 		
 		cmd = """grep -P 'CHROM\t' INFILE| cut -f1,2,3|shuf|head -5000 >OUTFILE"""
@@ -66,6 +66,12 @@ def main():
 
 		outqsubfile.write(content)
 		outqsubfile.close()
+
+	for file in os.listdir(inDir):
+		if ".plotdeep.qsub" in file:
+			os.system("qsub "+inDir+file)
+
+
 
 	return
 
