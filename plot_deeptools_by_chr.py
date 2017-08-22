@@ -84,13 +84,13 @@ def main():
 		numresultfiles = 0
 		for file in os.listdir(outDir):
 			if "chr" in file and "H3K" in file:
-			numresultfiles += 1
-		if numresultfiles == len(chromlist)*numinputfiles:
-			print "All files are here. Proceeed..."
-			break
-		else:
-			print "keep waiting..."
-			time.sleep(30)
+				numresultfiles += 1
+			if numresultfiles == len(chromlist)*numinputfiles:
+				print "All files are here. Proceeed..."
+				break
+			else:
+				print "keep waiting..."
+				time.sleep(30)
 
 	return
 
