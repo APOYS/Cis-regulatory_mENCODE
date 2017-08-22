@@ -36,7 +36,7 @@ computeMatrix reference-point -S BIGWIG -R REGIONS RANDOMFILE -out OUTPUT --refe
 """
 
 
-types = ["Con.Same","Con.Different","Con.Similar","Uncon","Con"]
+types = ["Con.Same","Con.Different","Con.Similar","Uncon","JustCon"]
 marks = ["H3K4me1","H3K4me3","H3K9me3","H3K27me3","H3K27ac","H3K36me3"]
 
 files = [inDir + x for x in os.listdir(inDir)]
