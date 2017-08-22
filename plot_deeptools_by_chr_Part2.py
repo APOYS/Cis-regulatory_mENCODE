@@ -38,7 +38,7 @@ marks = ["H3K4me1","H3K4me3","H3K9me3","H3K27me3","H3K27ac","H3K36me3"]
 
 files = [inDir + x for x in os.listdir(inDir)]
 for type in types:
-	qsubfile = open(type+'.'+mark+".qsub",'w')
+	qsubfile = open(type+".qsub",'w')
 	for mark in marks:
 		#get the regions 
 		regionfiles = ''
