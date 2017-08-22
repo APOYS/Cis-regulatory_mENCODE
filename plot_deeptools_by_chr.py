@@ -91,7 +91,31 @@ def main():
 		else:
 			print "Found %s files. Keep waiting for %s files ..." %(str(numresultfiles), str(len(chromlist)*numinputfiles - numresultfiles))
 			time.sleep(30)
+	
+
+	# procced to make combined regions files
+	print "Make combined regions files"
+	for chrom in chromlist:
+		print chrom
+		cmd = "mkdir "+outDir+'/'+chrom 
+		os.system(cmd)
+		
+		types = ["Con.Same","Con.Different","Con.Similar","UnCon","Con"]
+		marks = ["H3K4me1","H3K4me3","H3K9me3","H3K27me3","H3K27ac","H3K36me3"]
+		
+		for type in types:
+			for mark in marks:
+				cmd = "cat "+outDir+'/'+"%s*%s*5000 > %s/%s/%s.%s.combined.bed" %(type,mark,outDir,chrom,type,mark)
+				os.system(cmd)
+				#print cmd
+
+		# make qsub files for plotting
+
+
+
+
 	# remove all the qsub.e/o files in inDir
+
 	cmd = "rm *qsub.*" 
 	
 	os.system(cmd)
