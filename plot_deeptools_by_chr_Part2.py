@@ -40,11 +40,11 @@ files = [inDir + x for x in os.listdir(inDir)]
 for type in types:
 	qsubfile = open(type+".qsub",'w')
 	regionfiles = ''
-	
+
 	for mark in marks:
 		#get the regions 
 		for file in files:
-			if type in file and mark in file and "gz" not in file:
+			if type in file and mark in file and ".gz" not in file and ".qsub" not in file and ".eps" not in file:
 				regionfiles += file +' '
 
 	outputfile = type+'.'+mark+bigwigfile.split('/')[-1]+'.gz'
