@@ -12,7 +12,7 @@ args = parser.parse_args()
 
 
 inDir = args.inDir
-bwfile = args.bigwigfile
+bigwigfile = args.bigwigfile
 randomBedfile = args.randomBedfile
 
 for file in os.listdir(inDir):
