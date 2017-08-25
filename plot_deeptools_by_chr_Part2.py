@@ -27,7 +27,7 @@ for file in os.listdir(inDir):
 
 computeMatrixTemplate = """#!/bin/bash
 #$ -cwd
-#$ -pe smp 4 ##using 1 core
+#$ -pe smp 1 ##using 1 core
 #$ -j y
 #$ -S /bin/bash
 #$ -V
