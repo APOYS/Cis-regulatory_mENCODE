@@ -27,7 +27,7 @@ for file in os.listdir(inDir):
 
 computeMatrixTemplate = """#!/bin/bash
 #$ -cwd
-#$ -pe smp 1 ##using 1 core
+#$ -pe smp 4 ##using 1 core
 #$ -j y
 #$ -S /bin/bash
 #$ -V
@@ -52,7 +52,7 @@ for type in types:
 
 	outputfile = type+'.'+mark+'.'+bigwigfile.split('/')[-1]+'.gz'
 	content  = computeMatrixTemplate.replace("BIGWIG", bigwigfile).replace("REGIONS",regionfiles).replace("RANDOMFILE",randomBedfile).replace("OUTPUT",outputfile)
-	print content
+	#print content
 		
 	qsubfile.write(content)
 	qsubfile.close()
