@@ -85,8 +85,9 @@ cmd4 = "/home/vungo/MouseENCODE_project/Kaisscripts/motifscan {} {} {} {}".forma
 print cmd4
 os.system(cmd4)
 print "Background"
-print cmd5
+
 cmd5 = "/home/vungo/MouseENCODE_project/Kaisscripts/motifscan {} {} {} {}".format(genomeindex, motiffile, ssbBedB, outB)
+print cmd5
 os.system(cmd5)
 
 
