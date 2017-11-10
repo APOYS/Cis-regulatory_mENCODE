@@ -49,7 +49,7 @@ ssbB = fileB.replace(".bed",'.fa.ssb')
 cmd3 = "perl ssb.pl {} {} {} {}".format(faAname,faBname, ssbA, ssbB)
 
 print cmd3
-os.system(cmd3)
+#os.system(cmd3)
 
 
 
@@ -59,7 +59,7 @@ ssbBedA = open(ssbA+'.BED','w')
 for line in open(ssbA):
 	if line.startswith(">"):
 		tmp = line.strip().split(":")
-		chrom = tmp[0]
+		chrom = tmp[0].replace(">",'')
 		s,e = tmp[1].split('-')
 		newline = '\t'.join([chrom,s,e])
 		ssbBedA.write(newline + '\n')
@@ -69,7 +69,7 @@ ssbBedB = open(ssbB+'.BED','w')
 for line in open(ssbB):
 	if line.startswith(">"):
 		tmp = line.strip().split(":")
-		chrom = tmp[0]
+		chrom = tmp[0].replace(">",'')
 		s,e = tmp[1].split('-')
 		newline = '\t'.join([chrom,s,e])
 		ssbBedB.write(newline + '\n')
@@ -82,8 +82,10 @@ print "Foreground"
 
 genomeindex = "/home/vungo/MouseENCODE_project/Kaisscripts/hg19.idx"
 cmd4 = "/home/vungo/MouseENCODE_project/Kaisscripts/motifscan {} {} {} {}".format(genomeindex, motiffile, ssbBedA, outA)
+print cmd4
 os.system(cmd4)
 print "Background"
+print cmd5
 cmd5 = "/home/vungo/MouseENCODE_project/Kaisscripts/motifscan {} {} {} {}".format(genomeindex, motiffile, ssbBedB, outB)
 os.system(cmd5)
 
