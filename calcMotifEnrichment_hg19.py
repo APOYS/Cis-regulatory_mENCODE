@@ -49,7 +49,7 @@ ssbB = fileB.replace(".bed",'.fa.ssb')
 cmd3 = "perl ssb.pl {} {} {} {}".format(faAname,faBname, ssbA, ssbB)
 
 print cmd3
-#os.system(cmd3)
+os.system(cmd3)
 
 
 
