@@ -64,6 +64,7 @@ for line in open(ssbA):
 		newline = '\t'.join([chrom,s,e])
 		ssbBedA.write(newline + '\n')
 ssbBedA.close()
+ssbBedA = ssbA+'.BED'
 
 ssbBedB = open(ssbB+'.BED','w')
 for line in open(ssbB):
@@ -74,6 +75,7 @@ for line in open(ssbB):
 		newline = '\t'.join([chrom,s,e])
 		ssbBedB.write(newline + '\n')
 ssbBedB.close()
+ssbBedB = ssbB+'.BED'
 
 
 
